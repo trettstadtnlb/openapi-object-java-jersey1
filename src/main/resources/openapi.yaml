@@ -1,0 +1,27 @@
+openapi: 3.0.1
+info:
+  title: Example for failing serialization of object parameter
+  version: 1.0.0
+paths:
+  /example:
+    get:
+      operationId: search
+      parameters:
+        - name: params
+          in: query
+          required: true
+          explode: true
+          schema:
+            $ref: '#/components/schemas/Params'
+      responses:
+        200:
+          description: success
+components:
+  schemas:
+    Params:
+      type: object
+      properties:
+        name:
+          type: string
+        street:
+          type: string
